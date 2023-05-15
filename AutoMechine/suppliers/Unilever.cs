@@ -5,5 +5,9 @@ internal class Unilever : Supplier
     {
         ///Handles the order
     }
+    public Unilever(string name, string phoneNumber) : base(name, phoneNumber)
+    {
+
+    }
 }
 

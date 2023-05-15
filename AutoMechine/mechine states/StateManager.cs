@@ -1,5 +1,5 @@
-﻿
-    internal class StateManager
+﻿using AutoMechine;
+internal class StateManager
     {
 
     public MechineState MechineState { get; set; }
@@ -8,11 +8,10 @@
 
     public Stock Stock { get; set; }
 
-    public StateManager(MechineState mechineState, ProductType productType, Stock stock)
+    public StateManager(MechineState mechineState, Stock stock)
     {
         this.MechineState = mechineState;
         MechineState.StateManager = this;
-        this.ProductType = ProductType;
         this.Stock = stock;
     }
 
@@ -21,13 +20,13 @@
         MechineState = nextState;
     }
 
-    public void PerformCurrentStateActions()
+    public void PerformCurrentStateActions(Mechine form)
     {
-        MechineState.PerformCurrentStateActions();
+        MechineState.PerformCurrentStateActions(form);
     }
-    public void ResetButtons()
+    public void ResetButtons(Mechine form)
     {
-        MechineState.ResetButtons();
+        MechineState.ResetButtons(form);
     }
 
 }

@@ -5,5 +5,9 @@
     {
         ///Handles the order
     }
+    public Tnuva(string name, string phoneNumber) : base(name, phoneNumber)
+    {
+
+    }
 }
 

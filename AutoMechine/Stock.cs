@@ -11,7 +11,7 @@ public class Stock
         StockDict = stockDict;
         StockSuplliers = stockSuplliers;
     }
-    public Product getItem(ProductType productType)
+    public Product GetItem(ProductType productType)
     {
         Product product = null;
         if (StockDict.ContainsKey(productType))
