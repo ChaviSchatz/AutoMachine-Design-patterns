@@ -1,7 +1,16 @@
 ﻿
-    abstract internal class ReportFactory
+     internal class ReportFactory
     {
-    internal abstract Report CreateReport();
-
+    public Report CreateReport(ReportFormat format, TodaysPurchases todaysPurchases)
+    {
+        switch (format)
+        {
+            case ReportFormat.Txt:
+                return new TextReport(todaysPurchases);
+            default:
+              return null;
+        }
+    }
+        
     }
 

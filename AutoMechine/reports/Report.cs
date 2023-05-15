@@ -1,12 +1,13 @@
 ﻿
     abstract class Report
     {
-    public List<Purchase> PurchaseList { get; set; } = new();
-
-    public void AddPurchase(Purchase purchase)
+    public TodaysPurchases TodaysPurchases { get; set; }
+    public Report(TodaysPurchases todaysPurchases)
     {
-        PurchaseList.Add(purchase);
+        this.TodaysPurchases = todaysPurchases;
     }
+
+    public abstract void WriteReport();
 
     }
 
