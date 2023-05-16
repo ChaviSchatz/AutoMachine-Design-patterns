@@ -1,5 +1,6 @@
 ﻿
 using AutoMechine;
+using System.Windows.Forms;
 
 internal class ProcessState : MechineState
 {
@@ -61,6 +62,9 @@ internal class ProcessState : MechineState
             product = new ProductWithBag(product);
         }
         form.ProductLable.Text = product.ToString();
+
+        Addpurchase(form, product);
+
     }
 
     public override void ResetButtons(Mechine form)
@@ -77,5 +81,15 @@ internal class ProcessState : MechineState
         form.Change.Show();
         form.ProductLable.Show();
     }
+
+    private void Addpurchase(Mechine form, Product product)
+    {
+        Purchase p = new Purchase(StateManager.ProductType, DateTime.Now, product.Price,
+            ((int)(form.MoneyRecivedUpDoun.Value)),
+            ((int)form.MoneyRecivedUpDoun.Value - product.Price));
+        form.TodaysPurchases.AddPurchase(p);
+    }
+
+
 }
 

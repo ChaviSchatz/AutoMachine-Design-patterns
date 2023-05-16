@@ -109,7 +109,7 @@
             // pruductLable
             // 
             this.pruductLable.AutoSize = true;
-            this.pruductLable.Location = new System.Drawing.Point(369, 343);
+            this.pruductLable.Location = new System.Drawing.Point(235, 279);
             this.pruductLable.Name = "pruductLable";
             this.pruductLable.Size = new System.Drawing.Size(0, 15);
             this.pruductLable.TabIndex = 7;
@@ -145,7 +145,7 @@
             this.giftWrapCheckBox.UseVisualStyleBackColor = true;
             this.giftWrapCheckBox.CheckedChanged += new System.EventHandler(this.giftWrapCheckBox_CheckedChanged);
             // 
-            // Form1
+            // Mechine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -161,7 +161,7 @@
             this.Controls.Add(this.MoveToPayment);
             this.Controls.Add(this.productsLable);
             this.Controls.Add(this.products);
-            this.Name = "Form1";
+            this.Name = "Mechine";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.moneyRecived)).EndInit();
             this.ResumeLayout(false);
