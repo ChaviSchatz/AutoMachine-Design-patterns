@@ -1,8 +1,8 @@
 ﻿
-using AutoMechine;
+using AutoMachine;
 using System.Windows.Forms;
 
-internal class ProcessState : MechineState
+internal class ProcessState : MachineState
 {
     private ProcessState(StateManager stateManager) {
         StateManager = stateManager;
@@ -18,9 +18,9 @@ internal class ProcessState : MechineState
         }
         return _instance;
     }
-    public override void PerformCurrentStateActions(Mechine form)
+    public override void PerformCurrentStateActions(Machine Machine)
     {
-        ResetButtons(form);
+        ResetButtons(Machine);
         Product product = StateManager.Stock.GetItem(StateManager.ProductType);
         DrinkMakar drinkMakar = new DrinkMakar();
         switch (StateManager.ProductType)
@@ -53,41 +53,41 @@ internal class ProcessState : MechineState
                 break;
         }
 
-        if (form.GiftWrapCheckBox.Checked)
+        if (Machine.GiftWrapCheckBox.Checked)
         {
             product = new ProductWithGiftWrap(product);
         }
-        if (form.BagCheckBox.Checked)
+        if (Machine.BagCheckBox.Checked)
         {
             product = new ProductWithBag(product);
         }
-        form.ProductLable.Text = product.ToString();
+        Machine.ProductLable.Text = product.ToString();
 
-        Addpurchase(form, product);
+        Addpurchase(Machine, product);
 
     }
 
-    public override void ResetButtons(Mechine form)
+    public override void ResetButtons(Machine Machine)
     {
-        form.ProductsLable.Hide();
-        form.ComboBoxProducts.Hide();
-        form.MoveToPaymentButton.Hide();
-        form.BagCheckBox.Hide();
-        form.GiftWrapCheckBox.Hide();
-        form.BackButton.Hide();
-        form.PaymentButton.Hide();
-        form.MoneyRecived.Hide();
-        form.MoneyRecivedUpDoun.Hide();
-        form.Change.Show();
-        form.ProductLable.Show();
+        Machine.ProductsLable.Hide();
+        Machine.ComboBoxProducts.Hide();
+        Machine.MoveToPaymentButton.Hide();
+        Machine.BagCheckBox.Hide();
+        Machine.GiftWrapCheckBox.Hide();
+        Machine.BackButton.Show();
+        Machine.PaymentButton.Hide();
+        Machine.MoneyRecived.Hide();
+        Machine.MoneyRecivedUpDoun.Hide();
+        Machine.Change.Show();
+        Machine.ProductLable.Show();
     }
 
-    private void Addpurchase(Mechine form, Product product)
+    private void Addpurchase(Machine Machine, Product product)
     {
         Purchase p = new Purchase(StateManager.ProductType, DateTime.Now, product.Price,
-            ((int)(form.MoneyRecivedUpDoun.Value)),
-            ((int)form.MoneyRecivedUpDoun.Value - product.Price));
-        form.TodaysPurchases.AddPurchase(p);
+            ((int)(Machine.MoneyRecivedUpDoun.Value)),
+            ((int)Machine.MoneyRecivedUpDoun.Value - product.Price));
+        Machine.TodaysPurchases.AddPurchase(p);
     }
 
 

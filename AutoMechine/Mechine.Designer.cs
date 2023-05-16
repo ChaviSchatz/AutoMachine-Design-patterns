@@ -1,6 +1,6 @@
-﻿namespace AutoMechine
+﻿namespace AutoMachine
 {
-    partial class Mechine
+    partial class Machine
     {
         /// <summary>
         ///  Required designer variable.
@@ -145,7 +145,7 @@
             this.giftWrapCheckBox.UseVisualStyleBackColor = true;
             this.giftWrapCheckBox.CheckedChanged += new System.EventHandler(this.giftWrapCheckBox_CheckedChanged);
             // 
-            // Mechine
+            // Machine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -161,7 +161,7 @@
             this.Controls.Add(this.MoveToPayment);
             this.Controls.Add(this.productsLable);
             this.Controls.Add(this.products);
-            this.Name = "Mechine";
+            this.Name = "Machine";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.moneyRecived)).EndInit();
             this.ResumeLayout(false);

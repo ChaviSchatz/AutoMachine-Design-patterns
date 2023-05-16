@@ -1,32 +1,32 @@
-﻿using AutoMechine;
+﻿using AutoMachine;
 internal class StateManager
     {
 
-    public MechineState MechineState { get; set; }
+    public MachineState MachineState { get; set; }
 
     public ProductType ProductType { get; set; }
 
     public Stock Stock { get; set; }
 
-    public StateManager(MechineState mechineState, Stock stock)
+    public StateManager(MachineState MachineState, Stock stock)
     {
-        this.MechineState = mechineState;
-        MechineState.StateManager = this;
+        this.MachineState = MachineState;
+        MachineState.StateManager = this;
         this.Stock = stock;
     }
 
-    public void ChangeState(MechineState nextState)
+    public void ChangeState(MachineState nextState)
     {
-        MechineState = nextState;
+        MachineState = nextState;
     }
 
-    public void PerformCurrentStateActions(Mechine form)
+    public void PerformCurrentStateActions(Machine Machine)
     {
-        MechineState.PerformCurrentStateActions(form);
+        MachineState.PerformCurrentStateActions(Machine);
     }
-    public void ResetButtons(Mechine form)
+    public void ResetButtons(Machine Machine)
     {
-        MechineState.ResetButtons(form);
+        MachineState.ResetButtons(Machine);
     }
 
 }

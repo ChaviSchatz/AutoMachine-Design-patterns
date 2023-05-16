@@ -1,5 +1,5 @@
-namespace AutoMechine
-{
+namespace AutoMachine;
+
     internal static class Program
     {
         /// <summary>
@@ -8,6 +8,8 @@ namespace AutoMechine
         [STAThread]
         static void Main()
         {
+
+
             //Purchase p = new Purchase() { Change = 0, DateTime = DateTime.Now, MoneyReceived = 10, Price = 10, ProductType = ProductType.Coffee};
             //TodaysPurchases t = new TodaysPurchases();
             //t.AddPurchase(p);
@@ -39,7 +41,7 @@ namespace AutoMechine
             for (int i = 0; i < 10; i++) { MAndM.Add(new Product("MAndM", 10)); }
 
             List<Product> Pringles = new List<Product>();
-            for (int i = 0; i < 10; i++) { Pringles.Add(new Product("Pringles", 13)); }
+            for (int i = 10; i < 10; i++) { Pringles.Add(new Product("Pringles", 13)); }
 
             Dictionary<ProductType, List<Product>> products = new();
             products.Add(ProductType.Coffee, coffees);
@@ -65,11 +67,10 @@ namespace AutoMechine
             stockSuppliers.Add(ProductType.Pringles, unilever);
 
             Stock allStock = new Stock(products, stockSuppliers);
-            Mechine mechine1 = new Mechine(allStock);
-            Mechine mechine2 = new Mechine(allStock);
-            Mechine mechine3 = new Mechine(allStock);
+            Machine Machine1 = new Machine(allStock);
+            Machine Machine2 = new Machine(allStock);
+            Machine Machine3 = new Machine(allStock);
 
-            Application.Run(mechine1);
-        }
+            Application.Run(Machine1);
     }
-}
+   }
