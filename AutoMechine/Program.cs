@@ -8,33 +8,38 @@ namespace AutoMechine
         [STAThread]
         static void Main()
         {
+            //Purchase p = new Purchase() { Change = 0, DateTime = DateTime.Now, MoneyReceived = 10, Price = 10, ProductType = ProductType.Coffee};
+            //TodaysPurchases t = new TodaysPurchases();
+            //t.AddPurchase(p);
+            //Report f = new TextReport(t);
+            //f.WriteReport();
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
             List<Product> coffees = new List<Product>();
-            for (int i = 0; i < 10; i++) { coffees.Add(new Product() { Name = "coffee", Price = 8 }); }
+            for (int i = 0; i < 10; i++) { coffees.Add(new Product("coffee", 8)); }
 
             List<Product> iceCoffees = new List<Product>();
-            for (int i = 0; i < 10; i++) { iceCoffees.Add(new Product() { Name = "iceCoffees", Price = 15 }); }
+            for (int i = 0; i < 10; i++) { iceCoffees.Add(new Product("iceCoffees",15)); }
 
             List<Product> iceChocolateMilk = new List<Product>();
-            for (int i = 0; i < 10; i++) { iceChocolateMilk.Add(new Product() { Name = "iceChocolate", Price = 18 }); }
+            for (int i = 0; i < 10; i++) { iceChocolateMilk.Add(new Product("iceChocolate", 18)); }
 
             List<Product> ChocolateMilk = new List<Product>();
-            for (int i = 0; i < 10; i++) { ChocolateMilk.Add(new Product() { Name = "ChocolateMilk", Price = 12 }); }
+            for (int i = 0; i < 10; i++) { ChocolateMilk.Add(new Product("ChocolateMilk", 12)); }
 
             List<Product> MilkMunch = new List<Product>();
-            for (int i = 0; i < 10; i++) { MilkMunch.Add(new Product() { Name = "MilkMunch", Price = 6 }); }
+            for (int i = 0; i < 10; i++) { MilkMunch.Add(new Product("MilkMunch", 6)); }
 
             List<Product> KitKat = new List<Product>(); 
-            for (int i = 0; i < 10; i++) { KitKat.Add(new Product() { Name = "KitKat", Price = 3 }); }
+            for (int i = 0; i < 10; i++) { KitKat.Add(new Product("KitKat", 3)); }
 
             List<Product> MAndM = new List<Product>();
-            for (int i = 0; i < 10; i++) { MAndM.Add(new Product() { Name = "MAndM", Price = 10 }); }
+            for (int i = 0; i < 10; i++) { MAndM.Add(new Product("MAndM", 10)); }
 
             List<Product> Pringles = new List<Product>();
-            for (int i = 0; i < 10; i++) { Pringles.Add(new Product() { Name = "Pringles", Price = 13 }); }
+            for (int i = 0; i < 10; i++) { Pringles.Add(new Product("Pringles", 13)); }
 
             Dictionary<ProductType, List<Product>> products = new();
             products.Add(ProductType.Coffee, coffees);

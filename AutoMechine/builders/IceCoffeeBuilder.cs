@@ -25,14 +25,10 @@
     {
         iceCoffee.Description += ", Ices cubes";
     }
-    public IceCoffee getResult()
+    public override IceCoffee GetResult()
     {
         return iceCoffee;
     }
 
-    public override Product GetResult()
-    {
-        return iceCoffee;
-    }
 }
 

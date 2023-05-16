@@ -5,9 +5,9 @@ internal class ProductWithBag : ProductDecorator
     {
     }
 
-    public string ToString()
+    public override string ToString()
     {
-        return base.ToString() + " with bag";
+        return Product.ToString() + " with bag";
     }
 }
 

@@ -1,10 +1,14 @@
 ﻿
     public class Coffee :  Product
     {
-    public string Description { get; set; } = "";
-    public string ToString()
+    public Coffee(Product p):base(p.Name, p.Price)
     {
-        return base.ToString + Description;
+
+    }
+    public string Description { get; set; } = "";
+    public override string ToString()
+    {
+        return base.ToString() + " "+ Description;
     }
 
     }

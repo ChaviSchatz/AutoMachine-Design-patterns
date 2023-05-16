@@ -17,7 +17,7 @@
         builder.PourMilk();
         builder.Mix();
     }
-    public void MakeChocolateMilk(CoffeeBuilder builder)
+    public void MakeChocolateMilk(ChocolateMilkBuilder builder)
     {
         builder.AddFlavorPowder();
         builder.PourWater();
@@ -25,7 +25,7 @@
         builder.PourMilk();
         builder.Mix();
     }
-    public void MakeIceChocolateMilk(CoffeeBuilder builder)
+    public void MakeIceChocolateMilk(IceChocolateMilkBuilder builder)
     {
         builder.AddFlavorPowder();
         builder.PourWater();

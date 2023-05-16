@@ -1,3 +1,5 @@
+using System.Windows.Forms;
+
 namespace AutoMechine
 {
     internal partial class Mechine : Form
@@ -21,8 +23,6 @@ namespace AutoMechine
 
         public Mechine(Stock stock)
         {
-
-
             InitializeComponent();
             this.ProductsLable = productsLable;
             this.ComboBoxProducts = products;
@@ -37,17 +37,19 @@ namespace AutoMechine
             this.ProductLable = pruductLable;
             this.Stock = stock;
 
-            this.StateManager = new(SelectionState.GetInstance(), Stock);
+            this.StateManager = new(SelectionState.GetInstance(StateManager), Stock);
 
             StateManager.PerformCurrentStateActions(this);
 
             List<string> productList = new List<string>();
-            for (int i = 0; i < stock.StockDict.Count; i++)
+            for (int i = 0; i < Stock.StockDict.Count; i++)
             {
-                productList.Add((ProductType)i + "  " + stock.StockDict[(ProductType)i][0].Price.ToString());
+                if (Stock.StockDict[(ProductType)i].Count > 0)
+                {
+                    productList.Add((ProductType)i + "  " + Stock.StockDict[(ProductType)i][0].Price.ToString());
+                }
             }
-            products.DataSource = productList;
-
+            ComboBoxProducts.DataSource = productList;
 
         }
 
@@ -59,17 +61,17 @@ namespace AutoMechine
         private void MoveToPayment_Click(object sender, EventArgs e)
         {
             StateManager.ProductType = (ProductType)ComboBoxProducts.SelectedIndex;
-            StateManager.ChangeState(PaymentState.GetInstance());
+            StateManager.ChangeState(PaymentState.GetInstance(StateManager));
             StateManager.ResetButtons(this);
         }
 
         private void paymentButton_Click(object sender, EventArgs e)
         {
-
+            StateManager.PerformCurrentStateActions(this);
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            StateManager.ChangeState(SelectionState.GetInstance());
+            StateManager.ChangeState(SelectionState.GetInstance(StateManager));
             StateManager.ResetButtons(this);
         }
 

@@ -25,12 +25,8 @@
     {
         iceChocolateMilk.Description += ",Ice cubes";
     }
-    public IceChocolateMilk getResult()
-    {
-        return iceChocolateMilk;
-    }
 
-    public override Product GetResult()
+    public override IceChocolateMilk GetResult()
     {
         return iceChocolateMilk;
     }

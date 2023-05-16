@@ -3,9 +3,11 @@
     {
     public ProductType ProductType { get; set; }
     public DateTime DateTime { get; set; }
-    public double Price { get; set; }
-    public double MoneyReceived { get; set; }
-    public double Change { get; set; }
+    public int Price { get; set; }
+    public int MoneyReceived { get; set; }
+    public int Change { get; set; }
+
+  
 
     public string ToString()
     {

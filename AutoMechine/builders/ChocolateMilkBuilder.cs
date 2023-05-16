@@ -25,12 +25,8 @@
     {
         chocolateMilk.Description += ",hot water";
     }
-    public ChocolateMilk getResult()
-    {
-        return chocolateMilk;
-    }
 
-    public override Product GetResult()
+    public override ChocolateMilk GetResult()
     {
         return chocolateMilk;
     }

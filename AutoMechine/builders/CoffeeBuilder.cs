@@ -25,12 +25,8 @@ internal class CoffeeBuilder : DrinkBuilder
     {
         coffee.Description += ",hot water";
     }
-    public Coffee getResult()
-    {
-        return coffee;
-    }
 
-    public override Product GetResult()
+    public override Coffee GetResult()
     {
         return coffee;
     }
