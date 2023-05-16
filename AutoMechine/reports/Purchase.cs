@@ -7,7 +7,14 @@
     public int MoneyReceived { get; set; }
     public int Change { get; set; }
 
-  
+    public Purchase(ProductType productType, DateTime dateTime, int price, int moneyReceived, int change)
+    {
+        ProductType = productType;
+        DateTime = dateTime;
+        Price = price;
+        MoneyReceived = moneyReceived;
+        Change = change;
+    }
 
     public string ToString()
     {

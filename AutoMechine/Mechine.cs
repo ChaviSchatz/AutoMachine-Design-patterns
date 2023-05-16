@@ -4,7 +4,7 @@ namespace AutoMechine
 {
     internal partial class Mechine : Form
     {
-
+        public TodaysPurchases TodaysPurchases { get; set; }
 
         public Stock Stock { get; set; }
         public StateManager StateManager { get; set; }
@@ -24,6 +24,8 @@ namespace AutoMechine
         public Mechine(Stock stock)
         {
             InitializeComponent();
+            TodaysPurchases = new TodaysPurchases();
+
             this.ProductsLable = productsLable;
             this.ComboBoxProducts = products;
             this.MoveToPaymentButton = MoveToPayment;
