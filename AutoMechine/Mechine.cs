@@ -33,36 +33,36 @@ namespace AutoMachine
             TodaysPurchases = new TodaysPurchases();
 
 
-            this.ProductsLable = productsLable;
-            this.ComboBoxProducts = products;
-            this.MoveToPaymentButton = MoveToPayment;
-            this.BagCheckBox = bagCheckbox;
-            this.GiftWrapCheckBox = giftWrapCheckBox;
-            this.BackButton = backButton;
-            this.MoneyRecived = moneyRecivedLable;
-            this.MoneyRecivedUpDoun = moneyRecived;
-            this.PaymentButton = paymentButton;
-            this.Change = change;
-            this.ProductLable = pruductLable;
-            this.Stock = stock;
+            ProductsLable = productsLable;
+            ComboBoxProducts = products;
+            MoveToPaymentButton = MoveToPayment;
+            BagCheckBox = bagCheckbox;
+            GiftWrapCheckBox = giftWrapCheckBox;
+            BackButton = backButton;
+            MoneyRecived = moneyRecivedLable;
+            MoneyRecivedUpDoun = moneyRecived;
+            PaymentButton = paymentButton;
+            Change = change;
+            ProductLable = pruductLable;
+            Stock = stock;
 
-            this.StateManager = new(SelectionState.GetInstance(StateManager), Stock);
+            StateManager = new(SelectionState.GetInstance(StateManager), Stock);
 
             StateManager.PerformCurrentStateActions(this);
 
-            List<string> productList = new List<string>();
-            for (int i = 0; i < Stock.StockDict.Count; i++)
-            {
-               if (Stock.StockDict[(ProductType)i].Count > 0)
-                {
-                    productList.Add((ProductType)i + "  " + Stock.StockDict[(ProductType)i][0].Price.ToString());
-                }
-                else
-                {
-                    productList.Add((ProductType)i + "   not in stock");
-                }
-            }
-            ComboBoxProducts.DataSource = productList;
+            //List<string> productList = new List<string>();
+            //for (int i = 0; i < Stock.StockDict.Count; i++)
+            //{
+            //   if (Stock.StockDict[(ProductType)i].Count > 0)
+            //    {
+            //        productList.Add((ProductType)i + "  " + Stock.StockDict[(ProductType)i][0].Price.ToString());
+            //    }
+            //    else
+            //    {
+            //        productList.Add((ProductType)i + "   not in stock");
+            //    }
+            //}
+            //ComboBoxProducts.DataSource = productList;
 
         }
 
