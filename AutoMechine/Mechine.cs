@@ -28,7 +28,7 @@ namespace AutoMachine
 
             m_Timer = new Timer();
             m_Timer.Enabled = true;
-            m_Timer.Interval = (10000 * 60);
+            m_Timer.Interval = (10000 * 60 *60);
             m_Timer.Elapsed += ReportMaker;
             m_Timer.Start();
 

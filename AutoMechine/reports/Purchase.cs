@@ -16,7 +16,7 @@
         Change = change;
     }
 
-    public string ToString()
+    public override string ToString()
     {
         return $"DateTime: {DateTime}, Product: {ProductType}, Price: {Price}, MoneyReceived: {MoneyReceived}, Change: {Change}";
     }
