@@ -25,13 +25,14 @@ namespace AutoMachine
         public Machine(Stock stock)
         {
             InitializeComponent();
+
             m_Timer = new Timer();
             m_Timer.Enabled = true;
             m_Timer.Interval = (10000 *60);
-            m_Timer.Elapsed += Do;
+            m_Timer.Elapsed += ReportMaker;
             m_Timer.Start();
-            TodaysPurchases = new TodaysPurchases();
 
+            TodaysPurchases = new TodaysPurchases();
 
             ProductsLable = productsLable;
             ComboBoxProducts = products;
@@ -47,28 +48,7 @@ namespace AutoMachine
             Stock = stock;
 
             StateManager = new(SelectionState.GetInstance(StateManager), Stock);
-
             StateManager.PerformCurrentStateActions(this);
-
-            //List<string> productList = new List<string>();
-            //for (int i = 0; i < Stock.StockDict.Count; i++)
-            //{
-            //   if (Stock.StockDict[(ProductType)i].Count > 0)
-            //    {
-            //        productList.Add((ProductType)i + "  " + Stock.StockDict[(ProductType)i][0].Price.ToString());
-            //    }
-            //    else
-            //    {
-            //        productList.Add((ProductType)i + "   not in stock");
-            //    }
-            //}
-            //ComboBoxProducts.DataSource = productList;
-
-        }
-
-        private void products_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //StateManager.ProductType = 
         }
 
         private void MoveToPayment_Click(object sender, EventArgs e)
@@ -96,16 +76,7 @@ namespace AutoMachine
             StateManager.ResetButtons(this);
         }
 
-        private void giftWrapCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void moneyRecived_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void Do(object sender, ElapsedEventArgs args)
+        private void ReportMaker(object sender, ElapsedEventArgs args)
         {
             if (DateTime.Now.Hour == 0)
             {
@@ -113,6 +84,19 @@ namespace AutoMachine
                 ThisDayReport.WriteReport();
                 TodaysPurchases = new TodaysPurchases();
             }
+        }
+
+        private void giftWrapCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void moneyRecived_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void products_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //StateManager.ProductType = 
         }
     }
 }
