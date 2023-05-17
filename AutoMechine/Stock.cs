@@ -2,9 +2,8 @@
 public class Stock
     {
     private const int NUMFORORDER = 10;
-    public Dictionary<ProductType, List<Product>> StockDict { get; set; }
-
-    private Dictionary<ProductType, Supplier> StockSuplliers { get; set; }
+    public Dictionary<ProductType, List<Product>> StockDict { get; }
+    private Dictionary<ProductType, Supplier> StockSuplliers { get; }
 
     public Stock(Dictionary<ProductType, List<Product>> stockDict, Dictionary<ProductType, Supplier> stockSuplliers)
     {
@@ -34,6 +33,13 @@ public class Stock
         StockSuplliers[productType].OrderAProduct(numToOrder, productType);
     }
 
+    public void AddProductsToStock(ProductType productType,  List<Product> products)
+    {
+        products.ForEach(p =>
+        {
+            StockDict[productType].Add(p);
+        });
+    }
 
     }
 
