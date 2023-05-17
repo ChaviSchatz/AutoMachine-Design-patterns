@@ -60,6 +60,7 @@ internal class PaymentState : MachineState
         }
         machine.MoneyRecived.Text = $"Please insert {finalPrice}$";
         machine.MoneyRecived.Show();
+        machine.MoneyRecivedUpDoun.Value = 0;
         machine.MoneyRecivedUpDoun.Show();
         machine.Change.Show();
         machine.ProductLable.Hide();
