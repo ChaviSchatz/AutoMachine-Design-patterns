@@ -15,24 +15,37 @@ internal class SelectionState : MachineState
         }
         return _instance;
     }
-    public override void PerformCurrentStateActions(Machine Machine)
+    public override void PerformCurrentStateActions(Machine machine)
     {
-        ResetButtons(Machine);
+        ResetButtons(machine);
     }
 
-    public override void ResetButtons(Machine Machine)
+    public override void ResetButtons(Machine machine)
     {
-        Machine.ProductsLable.Show();
-        Machine.ComboBoxProducts.Show();
-        Machine.MoveToPaymentButton.Show();
-        Machine.BagCheckBox.Show();
-        Machine.GiftWrapCheckBox.Show();
-        Machine.BackButton.Hide();
-        Machine.PaymentButton.Hide();
-        Machine.MoneyRecived.Hide();
-        Machine.MoneyRecivedUpDoun.Hide();
-        Machine.Change.Hide();
-        Machine.ProductLable.Hide();
+        List<string> productList = new List<string>();
+        for (int i = 0; i < machine.Stock.StockDict.Count; i++)
+        {
+            if (machine.Stock.StockDict[(ProductType)i].Count > 0)
+            {
+                productList.Add((ProductType)i + "  " + machine.Stock.StockDict[(ProductType)i][0].Price.ToString());
+            }
+            else
+            {
+                productList.Add((ProductType)i + "   not in stock");
+            }
+        }
+        machine.ComboBoxProducts.DataSource = productList;
+        machine.ProductsLable.Show();
+        machine.ComboBoxProducts.Show();
+        machine.MoveToPaymentButton.Show();
+        machine.BagCheckBox.Show();
+        machine.GiftWrapCheckBox.Show();
+        machine.BackButton.Hide();
+        machine.PaymentButton.Hide();
+        machine.MoneyRecived.Hide();
+        machine.MoneyRecivedUpDoun.Hide();
+        machine.Change.Hide();
+        machine.ProductLable.Hide();
     }
 }
 

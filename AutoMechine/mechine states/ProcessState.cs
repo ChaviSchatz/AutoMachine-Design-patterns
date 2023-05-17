@@ -18,9 +18,9 @@ internal class ProcessState : MachineState
         }
         return _instance;
     }
-    public override void PerformCurrentStateActions(Machine Machine)
+    public override void PerformCurrentStateActions(Machine machine)
     {
-        ResetButtons(Machine);
+        ResetButtons(machine);
         Product product = StateManager.Stock.GetItem(StateManager.ProductType);
         DrinkMakar drinkMakar = new DrinkMakar();
         switch (StateManager.ProductType)
@@ -53,41 +53,41 @@ internal class ProcessState : MachineState
                 break;
         }
 
-        if (Machine.GiftWrapCheckBox.Checked)
+        if (machine.GiftWrapCheckBox.Checked)
         {
             product = new ProductWithGiftWrap(product);
         }
-        if (Machine.BagCheckBox.Checked)
+        if (machine.BagCheckBox.Checked)
         {
             product = new ProductWithBag(product);
         }
-        Machine.ProductLable.Text = product.ToString();
+        machine.ProductLable.Text = product.ToString();
 
-        Addpurchase(Machine, product);
+        Addpurchase(machine, product);
 
     }
 
-    public override void ResetButtons(Machine Machine)
+    public override void ResetButtons(Machine machine)
     {
-        Machine.ProductsLable.Hide();
-        Machine.ComboBoxProducts.Hide();
-        Machine.MoveToPaymentButton.Hide();
-        Machine.BagCheckBox.Hide();
-        Machine.GiftWrapCheckBox.Hide();
-        Machine.BackButton.Show();
-        Machine.PaymentButton.Hide();
-        Machine.MoneyRecived.Hide();
-        Machine.MoneyRecivedUpDoun.Hide();
-        Machine.Change.Show();
-        Machine.ProductLable.Show();
+        machine.ProductsLable.Hide();
+        machine.ComboBoxProducts.Hide();
+        machine.MoveToPaymentButton.Hide();
+        machine.BagCheckBox.Hide();
+        machine.GiftWrapCheckBox.Hide();
+        machine.BackButton.Show();
+        machine.PaymentButton.Hide();
+        machine.MoneyRecived.Hide();
+        machine.MoneyRecivedUpDoun.Hide();
+        machine.Change.Show();
+        machine.ProductLable.Show();
     }
 
-    private void Addpurchase(Machine Machine, Product product)
+    private void Addpurchase(Machine machine, Product product)
     {
         Purchase p = new Purchase(StateManager.ProductType, DateTime.Now, product.Price,
-            ((int)(Machine.MoneyRecivedUpDoun.Value)),
-            ((int)Machine.MoneyRecivedUpDoun.Value - product.Price));
-        Machine.TodaysPurchases.AddPurchase(p);
+            ((int)(machine.MoneyRecivedUpDoun.Value)),
+            ((int)machine.MoneyRecivedUpDoun.Value - product.Price));
+        machine.TodaysPurchases.AddPurchase(p);
     }
 
 

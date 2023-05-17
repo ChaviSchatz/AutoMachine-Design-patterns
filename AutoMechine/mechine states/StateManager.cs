@@ -20,13 +20,13 @@ internal class StateManager
         MachineState = nextState;
     }
 
-    public void PerformCurrentStateActions(Machine Machine)
+    public void PerformCurrentStateActions(Machine machine)
     {
-        MachineState.PerformCurrentStateActions(Machine);
+        MachineState.PerformCurrentStateActions(machine);
     }
-    public void ResetButtons(Machine Machine)
+    public void ResetButtons(Machine machine)
     {
-        MachineState.ResetButtons(Machine);
+        MachineState.ResetButtons(machine);
     }
 
 }

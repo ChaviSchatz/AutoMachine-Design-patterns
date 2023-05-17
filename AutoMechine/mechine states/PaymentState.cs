@@ -16,53 +16,53 @@ internal class PaymentState : MachineState
         }
         return _instance;
     }
-    public override void PerformCurrentStateActions(Machine Machine)
+    public override void PerformCurrentStateActions(Machine machine)
     {
         if (StateManager.Stock.StockDict[StateManager.ProductType].Count != 0)
         {
             int finalPrice = StateManager.Stock.StockDict[StateManager.ProductType][0].Price;
-            Machine.MoneyRecived.Text = $"Please insert {finalPrice}";
-            if (Machine.GiftWrapCheckBox.Checked)
+            machine.MoneyRecived.Text = $"Please insert {finalPrice}";
+            if (machine.GiftWrapCheckBox.Checked)
             {
                 finalPrice += 2;
             }
-            if (Machine.MoneyRecivedUpDoun.Value < finalPrice)
+            if (machine.MoneyRecivedUpDoun.Value < finalPrice)
             {
-                Machine.MoneyRecived.Text = $"Not Enough Money, Please add {finalPrice - Machine.MoneyRecivedUpDoun.Value}$";
+                machine.MoneyRecived.Text = $"Not Enough Money, Please add {finalPrice - machine.MoneyRecivedUpDoun.Value}$";
             }
             else
             {
-                Machine.Change.Text = $"change: {Machine.MoneyRecivedUpDoun.Value - finalPrice}";
+                machine.Change.Text = $"change: {machine.MoneyRecivedUpDoun.Value - finalPrice}";
                 StateManager.ChangeState(ProcessState.GetInstance(StateManager));
-                StateManager.PerformCurrentStateActions(Machine);
+                StateManager.PerformCurrentStateActions(machine);
             }
         }
         else
         {
-            Machine.MoneyRecived.Text = "Sorry, The product is out of stock!";
+            machine.MoneyRecived.Text = "Sorry, The product is out of stock!";
         }
 
     }
 
-    public override void ResetButtons(Machine Machine)
+    public override void ResetButtons(Machine machine)
     {
-        Machine.ProductsLable.Hide();
-        Machine.ComboBoxProducts.Hide();
-        Machine.MoveToPaymentButton.Hide();
-        Machine.BagCheckBox.Hide();
-        Machine.GiftWrapCheckBox.Hide();
-        Machine.BackButton.Show();
-        Machine.PaymentButton.Show();
+        machine.ProductsLable.Hide();
+        machine.ComboBoxProducts.Hide();
+        machine.MoveToPaymentButton.Hide();
+        machine.BagCheckBox.Hide();
+        machine.GiftWrapCheckBox.Hide();
+        machine.BackButton.Show();
+        machine.PaymentButton.Show();
         int finalPrice = StateManager.Stock.StockDict[StateManager.ProductType][0].Price;
-        if (Machine.GiftWrapCheckBox.Checked)
+        if (machine.GiftWrapCheckBox.Checked)
         {
             finalPrice += 2;
         }
-        Machine.MoneyRecived.Text = $"Please insert {finalPrice}$";
-        Machine.MoneyRecived.Show();
-        Machine.MoneyRecivedUpDoun.Show();
-        Machine.Change.Show();
-        Machine.ProductLable.Hide();
+        machine.MoneyRecived.Text = $"Please insert {finalPrice}$";
+        machine.MoneyRecived.Show();
+        machine.MoneyRecivedUpDoun.Show();
+        machine.Change.Show();
+        machine.ProductLable.Hide();
     }
 }
 

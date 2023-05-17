@@ -27,7 +27,7 @@ namespace AutoMachine
             InitializeComponent();
             m_Timer = new Timer();
             m_Timer.Enabled = true;
-            m_Timer.Interval = 1000;
+            m_Timer.Interval = (10000 *60);
             m_Timer.Elapsed += Do;
             m_Timer.Start();
             TodaysPurchases = new TodaysPurchases();
@@ -107,7 +107,7 @@ namespace AutoMachine
         }
         private void Do(object sender, ElapsedEventArgs args)
         {
-            if (DateTime.Now.Hour == 21 && DateTime.Now.Minute == 41)
+            if (DateTime.Now.Hour == 0)
             {
                 ThisDayReport = new TextReport(TodaysPurchases);
                 ThisDayReport.WriteReport();
